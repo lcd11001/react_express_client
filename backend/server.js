@@ -31,6 +31,12 @@ connection
         console.error(`${err.message ? err.message : err}`)
     })
 
+const exerciseRouter = require('./routes/exercise')
+const userRouter = require('./routes/user')
+
+app.use('/exercises', exerciseRouter)
+app.use('/users', userRouter)
+
 app.listen(port, () => {
     Utils.ColorLog(Utils.WARNING, `server is running on port: ${port}`)
 })
