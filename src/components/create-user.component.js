@@ -1,4 +1,5 @@
 import React from 'react'
+import * as API from '../api'
 
 export default class CreateUser extends React.Component {
     constructor(props) {
@@ -22,10 +23,16 @@ export default class CreateUser extends React.Component {
         }
 
         console.log(user)
-
-        this.setState({
-            username: ''
-        })
+        API.AddUser(user)
+            .then(res => {
+                console.log(res.data)
+                this.setState({
+                    username: ''
+                })
+            })
+            .catch(err => {
+                console.error(err)
+            })
     }
 
     render() {
