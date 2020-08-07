@@ -1,4 +1,4 @@
-import * as Utils from './Utils'
+const Utils = require('./Utils')
 
 const express = require('express')
 const cors = require('cors')

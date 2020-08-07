@@ -1,1 +1,2 @@
-npm run dev
+REM npm run dev
+nodemon server
