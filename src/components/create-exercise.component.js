@@ -26,6 +26,9 @@ export default class CreateExercise extends React.Component {
                     })
                 }
             })
+            .catch(err => {
+                console.error(err)
+            })
     }
 
     onChangeUsername = (e) => {

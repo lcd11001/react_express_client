@@ -47,8 +47,9 @@ export default class ExerciseList extends React.Component {
                     exercises: prevState.exercises.filter(ex => ex._id !== id)
                 }))
             })
-
-
+            .catch(err => {
+                console.error(err)
+            })
     }
 
 
