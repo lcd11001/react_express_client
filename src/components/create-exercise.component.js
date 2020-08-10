@@ -1,4 +1,5 @@
 import React from 'react'
+import * as API from '../api'
 
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -16,10 +17,15 @@ export default class CreateExercise extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({
-            users: ['test user'],
-            username: 'test user'
-        })
+        API.GetUsers()
+            .then(res => {
+                if (res.data.length > 0) {
+                    this.setState({
+                        users: res.data.map(user => user.username),
+                        username: res.data[0].username
+                    })
+                }
+            })
     }
 
     onChangeUsername = (e) => {
@@ -57,6 +63,13 @@ export default class CreateExercise extends React.Component {
         }
 
         console.log(exercise)
+        API.AddExercise(exercise)
+            .then(res => {
+                console.log(res.data)
+            })
+            .catch(err => {
+                console.error(err)
+            })
 
         window.location = '/'
     }
